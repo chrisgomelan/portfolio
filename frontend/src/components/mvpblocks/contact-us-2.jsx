@@ -7,6 +7,7 @@ import { Github } from "lucide-react";
 import { Linkedin } from "lucide-react";
 import { Send } from "lucide-react";
 import { Toaster, toast } from "sonner";
+
 export function ContactUs2() {
   const [state, setState] = React.useState({
     name: "",
@@ -16,12 +17,13 @@ export function ContactUs2() {
     submitting: false,
     submitted: false,
   });
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setState({ ...state, submitting: true });
 
     try {
-      const response = await fetch('http://localhost:5000/api/contact', {
+      const response = await fetch('/api/send-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -36,7 +38,6 @@ export function ContactUs2() {
       const data = await response.json();
 
       if (response.ok) {
-        // Success
         setState({
           name: "",
           email: "",
@@ -45,24 +46,23 @@ export function ContactUs2() {
           submitting: false,
           submitted: true,
         });
-        toast.success('Email sent successfully!');
+        toast.success('Email sent successfully! ✅');
       } else {
-        // Error from server
         setState({
           ...state,
           submitting: false,
           errors: { general: data.error || 'Failed to send email' },
         });
-        toast.error('Failed to send email');
+        toast.error(data.error || 'Failed to send email');
       }
     } catch (error) {
       console.error('Error:', error);
       setState({
         ...state,
         submitting: false,
-        errors: { general: 'Connection error. Make sure the backend server is running on port 5000.' },
+        errors: { general: error.message || 'Failed to send email' },
       });
-      toast.error('Connection error. Make sure the backend server is running.');
+      toast.error(error.message || 'Failed to send email');
     }
   };
   return (

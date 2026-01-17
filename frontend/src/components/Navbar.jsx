@@ -27,7 +27,7 @@ function CustomNavbar() {
       <NavBody>
         <NavbarLogo />
         <NavItems items={navItems} />
-        <NavbarButton href="#contact">Get Started</NavbarButton>
+        <NavbarButton href="#contact">Hire Me!</NavbarButton>
       </NavBody>
       <MobileNav>
         <MobileNavHeader>

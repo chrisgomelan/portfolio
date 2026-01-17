@@ -45,7 +45,7 @@ function CustomNavbar() {
               {item.name}
             </a>
           ))}
-          <NavbarButton href="#contact" className="mt-4 w-full">Get Started</NavbarButton>
+          <NavbarButton href="#contact" className="mt-4 w-full">Hire Me!</NavbarButton>
         </MobileNavMenu>
       </MobileNav>
     </Navbar>

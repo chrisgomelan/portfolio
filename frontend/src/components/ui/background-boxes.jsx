@@ -10,15 +10,10 @@ export const BoxesCore = ({
   const rows = new Array(150).fill(1);
   const cols = new Array(100).fill(1);
   let colors = [
-    "#1e40af",
-    "#000000",
-    "#0891b2",
-    "#0d9488",
-    "#dc2626",
-    "#8b5cf6",
-    "#1e40af",
-    "#4f46e5",
-    "#6366f1",
+    "#fcfcfc",
+    "#343633",
+    "#7286A0",
+
   ];
   const getRandomColor = () => {
     return colors[Math.floor(Math.random() * colors.length)];

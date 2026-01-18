@@ -2,6 +2,7 @@ import { Spotlight } from "../components/ui/spotlight-new";
 import { CircularText } from "../components/mvpblocks/circular-text";
 import { IconDownload } from "@tabler/icons-react";
 import { CardSpotlight } from "@/components/ui/card-spotlight";
+import { IconFileText } from "@tabler/icons-react";
 import { useState } from "react";
 import {
   Dialog,
@@ -26,17 +27,23 @@ function Resume() {
   };
 
   return (
-    <section id="resume" className="relative flex items-center justify-center py-8 sm:py-12 md:py-16 bg-black overflow-hidden min-h-screen">
+    <section id="resume" className="relative flex items-center justify-center py-8 sm:py-12 md:py-16 bg-black overflow-hidden min-h-[50vh] sm:min-h-[40vh] md:min-h-[40vh]">
       <Spotlight/>
-      <div className="relative z-10 max-w-5xl mx-auto text-center px-3 sm:px-4">
-          <CardSpotlight className="h-40 w-40 sm:h-60 sm:w-60 md:h-80 md:w-80">
+      <div className="relative z-10 max-w-5xl mx-auto text-center px-3 sm:px-4 hover:scale-105 transform-gpu transition-all duration-300 ">
+          <CardSpotlight className="h-40 w-40 sm:h-60 sm:w-60 md:h-80 md:w-80 hover:shadow-2xl hover:shadow-white/30 transition-shadow duration-300">
           
           <div className="relative z-20 flex items-center justify-center h-full cursor-pointer" onClick={() => setIsModalOpen(true)}>
+            <div className="scale-125 transform-gpu">
             <CircularText
-              text="View My Resume • Download PDF •"
-              radius={100}
-              className="mx-auto font-bold text-sm sm:text-lg md:text-2xl text-white"
+              text="SKILLS • EXPERIENCE • PROJECTS • BACKGROUND • "
+              radius={125}
+      className="mx-auto font-bold text-[10px] sm:text-xs md:text-sm text-white"
             />
+             <div className="absolute inset-0 flex items-center flex-col justify-center">
+              <IconFileText size={48} className="text-white sm:w-12 sm:h-12 md:w-16 md:h-16" />
+              <span className="text-white font-bold text-sm sm:text-base md:text-xl">RESUME</span>
+            </div>
+            </div>  
           </div>
         </CardSpotlight>
       </div>

@@ -75,7 +75,7 @@ export const projects = [
     ],
     technologies: ["Laravel", "PHP", "HTML", "CSS", "JavaScript", "MySQL", "RFID/Barcode"],
     image: "/images/lib.png",
-    live: "https://library.bps.edu.ph",
+    live: "https://",
     featured: true,
   },
   {

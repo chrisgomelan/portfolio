@@ -24,7 +24,7 @@ function About() {
 
 
   return (
-    <section id="about" className="min-h-screen flex items-center justify-center py-8 sm:py-12 md:py-16">
+    <section id="about" className="min-h-[50vh] sm:min-h-[40vh] md:min-h-[40vh] sm:p-8 md:p-8 flex items-center justify-center py-8 sm:py-12 md:py-16">
       <div className="max-w-5xl gap-4 mx-auto text-center px-3 sm:px-4 flex flex-col md:flex-row md:space-x-8">
         <div className="w-full md:w-3/4 left-about flex flex-col items-center md:items-start mb-6 md:mb-0">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">About Me</h2>

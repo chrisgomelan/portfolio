@@ -3,12 +3,12 @@ import { projects } from "@/data/project";
 
 function Projects() {
   return (
-    <section id="projects" className="min-h-screen flex items-center justify-center py-12 sm:py-16 md:py-20">
+    <section id="projects" className="min-h-screen flex justify-center items-center justify-center py-12 sm:py-16 md:py-20">
       <div className="w-full mx-auto text-center px-3 sm:px-4 md:px-6">
         <h2 className="mb-8 sm:mb-10 md:mb-12 text-2xl sm:text-3xl md:text-4xl font-bold text-black dark:text-white">
           Featured Projects
         </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8 place-items-center">
             {projects.filter(project => project.featured).map(project => (
             <CardFlip
               key={project.id}

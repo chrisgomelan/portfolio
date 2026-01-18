@@ -19,8 +19,10 @@ const getTransition = (duration, from) => ({
 });
 export function CircularText({
   text = "Circular Text Animation • ",
+  radius = 100,
   spinDuration = 20,
   onHover = "speedUp",
+  fontSize = 14,
   className = "",
 }) {
   const letters = Array.from(text);
@@ -77,7 +79,11 @@ export function CircularText({
     <div className="flex min-h-[400px] items-center justify-center rounded-lg">
       <motion.div
         className={`relative m-0 mx-auto h-[200px] w-[200px] origin-center cursor-pointer rounded-full text-center font-black ${className}`}
-        style={{ rotate: rotation }}
+        style={{
+          rotate: rotation,
+          width: `${radius * 2}px`,
+          height: `${radius * 2}px`,
+        }}
         initial={{ rotate: 0 }}
         animate={controls}
         onMouseEnter={handleHoverStart}
@@ -91,8 +97,8 @@ export function CircularText({
           return (
             <span
               key={i}
-              className="absolute inset-0 inline-block text-2xl transition-all duration-500 ease-out"
-              style={{ transform, WebkitTransform: transform }}>
+              className="absolute inset-0 inline-block transition-all duration-500 ease-out"
+              style={{ transform, WebkitTransform: transform, fontSize: fontSize, letterSpacing: "0.01em" }}>
               {letter}
             </span>
           );

@@ -1,3 +1,4 @@
+import { FadeInOnScroll } from "@/components/ui/fade-in-on-scroll";
 import { ContactUs2 } from "../components/mvpblocks/contact-us-2";
 function Contact() {
   return (

@@ -13,6 +13,7 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import { FadeInOnScroll } from "@/components/ui/fade-in-on-scroll";
 
 function Resume() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -29,7 +30,7 @@ function Resume() {
   return (
     <section id="resume" className="relative flex items-center justify-center py-8 sm:py-12 md:py-16 bg-black overflow-hidden min-h-[50vh] sm:min-h-[40vh] md:min-h-[40vh]">
       <Spotlight/>
-      <div className="relative z-10 max-w-5xl mx-auto text-center px-3 sm:px-4 hover:scale-105 transform-gpu transition-all duration-300 ">
+      <FadeInOnScroll className="relative z-10 max-w-5xl mx-auto text-center px-3 sm:px-4 hover:scale-105 transform-gpu transition-all duration-300 ">
           <CardSpotlight className="h-40 w-40 sm:h-60 sm:w-60 md:h-80 md:w-80 hover:shadow-2xl hover:shadow-white/30 transition-shadow duration-300">
           
           <div className="relative z-20 flex items-center justify-center h-full cursor-pointer" onClick={() => setIsModalOpen(true)}>
@@ -46,7 +47,7 @@ function Resume() {
             </div>  
           </div>
         </CardSpotlight>
-      </div>
+      </FadeInOnScroll>
 
       <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
         <DialogContent className="max-w-2xl sm:max-w-3xl md:max-w-4xl max-h-[80vh] sm:max-h-[85vh] md:max-h-[90vh] mx-2 sm:mx-0">

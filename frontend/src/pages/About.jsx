@@ -1,5 +1,6 @@
 import { IconBrandJavascript, IconBrandReact, IconBrandNodejs, IconBrandPython, IconBrandTailwind, IconBrandHtml5, IconBrandCpp, IconBrandPhp, IconBrandMysql, IconBrandLaravel, IconBrandBootstrap, IconBrandGit, IconBrandGithub, IconBrandFigma, IconSchool, IconBriefcase } from "@tabler/icons-react";
 import {experiences, education} from "../data/project.js";
+import { FadeInOnScroll } from "@/components/ui/fade-in-on-scroll.jsx";
 function About() {
   const languages = [
     { icon: IconBrandHtml5, name: "HTML", color: "text-orange-500" },
@@ -25,7 +26,7 @@ function About() {
 
   return (
     <section id="about" className="min-h-[50vh] sm:min-h-[40vh] md:min-h-[40vh] sm:p-8 md:p-8 flex items-center justify-center py-8 sm:py-12 md:py-16">
-      <div className="max-w-5xl gap-4 mx-auto text-center px-3 sm:px-4 flex flex-col md:flex-row md:space-x-8">
+      <FadeInOnScroll className="max-w-5xl gap-4 mx-auto text-center px-3 sm:px-4 flex flex-col md:flex-row md:space-x-8">
         <div className="w-full md:w-3/4 left-about flex flex-col items-center md:items-start mb-6 md:mb-0">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">About Me</h2>
           <p className="mb-4 sm:mb-6 md:mb-8 text-xs sm:text-sm md:text-base lg:text-lg font-[400] text-gray-600 text-start">
@@ -115,7 +116,7 @@ function About() {
             </div>
 
         </div>
-      </div>
+      </FadeInOnScroll>
     </section>
   )
 }

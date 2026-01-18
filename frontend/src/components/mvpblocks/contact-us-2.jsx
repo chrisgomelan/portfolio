@@ -7,6 +7,7 @@ import { Github } from "lucide-react";
 import { Linkedin } from "lucide-react";
 import { Send } from "lucide-react";
 import { Toaster, toast } from "sonner";
+import { FadeInOnScroll } from "../ui/fade-in-on-scroll";
 
 export function ContactUs2() {
   const [state, setState] = React.useState({
@@ -69,6 +70,7 @@ export function ContactUs2() {
     <>
     <Toaster position="top-right" richColors />
     <section className="w-3/4 px-2">
+    <FadeInOnScroll className="mx-auto my-12 max-w-3xl">
       <h2 className="mt-4 mb-3 text-center text-2xl font-bold text-white sm:text-3xl md:text-4xl lg:text-5xl">
         Get In Touch
       </h2>
@@ -188,6 +190,7 @@ export function ContactUs2() {
           </div>
         </div>
       </div>
+      </FadeInOnScroll>
     </section>
     </>
   );

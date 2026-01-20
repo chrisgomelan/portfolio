@@ -9,35 +9,33 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Message is required' });
   }
 
-  if (!process.env.HUGGING_FACE_API_KEY) {
-    console.error('HUGGING_FACE_API_KEY is not set');
-    return res.status(500).json({ error: 'Hugging Face API not configured' });
+  if (!process.env.GEMINI_API_KEY) {
+    console.error('GEMINI_API_KEY is not set');
+    return res.status(500).json({ error: 'Gemini API not configured' });
   }
 
   try {
     const response = await fetch(
-      'https://router.huggingface.co/models/gpt2',
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
       {
-        headers: { Authorization: `Bearer ${process.env.HUGGING_FACE_API_KEY}` },
         method: 'POST',
-        body: JSON.stringify({ inputs: message }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: message }] }],
+        }),
       }
     );
 
-    const text = await response.text();
-    console.log('Hugging Face response status:', response.status);
-    console.log('Hugging Face response:', text);
-
     if (!response.ok) {
-      throw new Error(`API Error: ${text}`);
+      throw new Error(`Gemini API error: ${response.statusText}`);
     }
 
-    const result = JSON.parse(text);
-    const reply = result[0]?.generated_text || 'No response received';
+    const data = await response.json();
+    const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || 'No response received';
 
     return res.status(200).json({ reply });
   } catch (error) {
-    console.error('Hugging Face error:', error);
+    console.error('Gemini error:', error);
     return res.status(500).json({ error: error.message || 'Failed to generate response' });
   }
 }

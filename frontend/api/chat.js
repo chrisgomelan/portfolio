@@ -1,10 +1,11 @@
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
   const { message } = req.body;
-  const finalMessage = message + 'You are an AI assistant for Christian Ramirez Gomelan.';
+
   if (!message) {
     return res.status(400).json({ error: 'Message is required' });
   }
@@ -21,7 +22,7 @@ export default async function handler(req, res) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          contents: [{ parts: [{ text: finalMessage }] }],
+          contents: [{ parts: [{ text: message }] }],
         }),
       }
     );

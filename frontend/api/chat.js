@@ -14,14 +14,9 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: 'Hugging Face API not configured' });
   }
 
-  if (!process.env.HUGGING_FACE_API_KEY) {
-    console.error('HUGGING_FACE_API_KEY is not set');
-    return res.status(500).json({ error: 'Hugging Face API not configured' });
-  }
-
   try {
     const response = await fetch(
-      'https://api-inference.huggingface.co/models/meta-llama/Llama-2-7b-chat-hf',
+      'https://router.huggingface.co/models/meta-llama/Llama-2-7b-chat-hf',
       {
         headers: { Authorization: `Bearer ${process.env.HUGGING_FACE_API_KEY}` },
         method: 'POST',

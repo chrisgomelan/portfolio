@@ -1,4 +1,3 @@
-import SYSTEM_CONTEXT from '../src/data/context';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -23,7 +22,7 @@ export default async function handler(req, res) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          contents: [{ parts: [{ text: message }] }, { parts: [{ text: SYSTEM_CONTEXT }] }],
+          contents: [{ parts: [{ text: message }] }],
         }),
       }
     );

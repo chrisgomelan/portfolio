@@ -24,12 +24,15 @@ export default async function handler(req, res) {
       }
     );
 
+    const text = await response.text();
+    console.log('Hugging Face response status:', response.status);
+    console.log('Hugging Face response:', text);
+
     if (!response.ok) {
-      const error = await response.json();
-      throw new Error(error.error || 'Failed to get response from Hugging Face');
+      throw new Error(`API Error: ${text}`);
     }
 
-    const result = await response.json();
+    const result = JSON.parse(text);
     const reply = result[0]?.generated_text || 'No response received';
 
     return res.status(200).json({ reply });

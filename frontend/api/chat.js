@@ -26,10 +26,16 @@ export default async function handler(req, res) {
       }
     );
 
-    const data = await response.json();
-    console.log('Gemini API response:', data);
-    const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || 'No response received';
+     const data = await response.json();
+    console.log('Gemini API raw response:', JSON.stringify(data, null, 2)); // Log full response
 
+    let reply = 'No response received';
+    if (data.candidates && data.candidates.length > 0) {
+      reply = data.candidates[0]?.content?.parts?.[0]?.text || reply;
+    } else if (data.error) {
+      reply = `Error: ${data.error.message || JSON.stringify(data.error)}`;
+    }
+    
     return res.status(200).json({ reply });
   } catch (error) {
     console.error('Gemini error:', error);

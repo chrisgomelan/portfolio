@@ -16,7 +16,7 @@ export default async function handler(req, res) {
 
   try {
     const response = await fetch(
-      'https://route.huggingface.co/models/gpt2',
+      'https://router.huggingface.co/models/gpt2',
       {
         headers: { Authorization: `Bearer ${process.env.HUGGING_FACE_API_KEY}` },
         method: 'POST',

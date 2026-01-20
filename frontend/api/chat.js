@@ -17,7 +17,8 @@ export default async function handler(req, res) {
   }
 
   try {
-    const fullPrompt = `${SYSTEM_CONTEXT}\nUser: ${message}\nAI:`;
+    // Prepend the context to the user's message
+    const fullPrompt = `${SYSTEM_CONTEXT}\nUser: ${message}`;
 
     const response = await fetch(
       `https://generativelanguage.googleapis.com/v1/models/gemini-2.5-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
@@ -30,25 +31,7 @@ export default async function handler(req, res) {
       }
     );
 
-    const contentType = response.headers.get('content-type');
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error(`Gemini API error (${response.status}):`, errorText);
-      return res.status(response.status).json({
-        error: `Gemini API error (${response.status})`,
-        details: errorText,
-      });
-    }
-
-    let data;
-    if (contentType && contentType.includes('application/json')) {
-      data = await response.json();
-    } else {
-      const text = await response.text();
-      console.error('Non-JSON response:', text);
-      return res.status(500).json({ error: 'Non-JSON response from Gemini API', details: text });
-    }
-
+    const data = await response.json();
     console.log('Gemini API raw response:', JSON.stringify(data, null, 2));
 
     let reply = 'No response received';

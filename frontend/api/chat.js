@@ -16,7 +16,7 @@ export default async function handler(req, res) {
 
   try {
     const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=${process.env.GEMINI_API_KEY}`,
+      `https://generativelanguage.googleapis.com/v1/models/gemini-2.5-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -26,8 +26,8 @@ export default async function handler(req, res) {
       }
     );
 
-     const data = await response.json();
-    console.log('Gemini API raw response:', JSON.stringify(data, null, 2)); // Log full response
+    const data = await response.json();
+    console.log('Gemini API raw response:', JSON.stringify(data, null, 2));
 
     let reply = 'No response received';
     if (data.candidates && data.candidates.length > 0) {
@@ -35,7 +35,7 @@ export default async function handler(req, res) {
     } else if (data.error) {
       reply = `Error: ${data.error.message || JSON.stringify(data.error)}`;
     }
-    
+
     return res.status(200).json({ reply });
   } catch (error) {
     console.error('Gemini error:', error);

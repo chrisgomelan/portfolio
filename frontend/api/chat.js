@@ -27,6 +27,7 @@ export default async function handler(req, res) {
     );
 
     const data = await response.json();
+    console.log('Gemini API response:', data);
     const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || 'No response received';
 
     return res.status(200).json({ reply });

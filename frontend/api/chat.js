@@ -31,6 +31,15 @@ export default async function handler(req, res) {
     );
 
     const contentType = response.headers.get('content-type');
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error(`Gemini API error (${response.status}):`, errorText);
+      return res.status(response.status).json({
+        error: `Gemini API error (${response.status})`,
+        details: errorText,
+      });
+    }
+
     let data;
     if (contentType && contentType.includes('application/json')) {
       data = await response.json();

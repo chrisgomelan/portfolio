@@ -1,9 +1,11 @@
+import SYSTEM_CONTEXT from '../src/data/context';
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { message } = req.body + "You are an AI, and you name is Christian Ramirez Gomelan";
+  const { message } = req.body;
 
   if (!message) {
     return res.status(400).json({ error: 'Message is required' });
@@ -21,7 +23,7 @@ export default async function handler(req, res) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          contents: [{ parts: [{ text: message }] }],
+          contents: [{ parts: [{ text: message }] }, { parts: [{ text: SYSTEM_CONTEXT }] }],
         }),
       }
     );

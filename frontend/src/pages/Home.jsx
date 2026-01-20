@@ -5,7 +5,7 @@ function Home() {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center bg-black text-white overflow-hidden">
       <Boxes className="absolute inset-0" />
-      <FadeInOnScroll className="relative z-10 text-center px-3 sm:px-4 md:px-6">
+      <FadeInOnScroll className="relative  text-center px-3 sm:px-4 md:px-6">
         <h1 className="mb-4 sm:mb-6 md:mb-8 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white">
           <TextType
 text={["Hey, I'm Christian.", "Crafting scalable web solutions", "Let's build something exceptional together"]}

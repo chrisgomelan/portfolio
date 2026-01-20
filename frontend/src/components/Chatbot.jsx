@@ -35,12 +35,18 @@ export default function Chatbot() {
             },
             body: JSON.stringify({message: messageText}),
          });
-
-         if(!response.ok){
-            throw new Error('Failed to get response from AI');
-         }
-         
-         const data = await response.json();
+        if(!response.ok){
+                const errorData = await response.json();
+                console.error('API Error:', errorData);
+                throw new Error(errorData.error || 'Failed to get response from AI');
+            }
+            
+            const data = await response.json();
+            console.log('API Response:', data);
+            
+            if (!data.reply) {
+                throw new Error('No reply received from API');
+            }
          const botMessage = {sender: 'bot', text: data.reply};
             setMessages((prevMessages) => [...prevMessages, botMessage]);   
        } catch (error){

@@ -19,6 +19,8 @@ const navItems = [
   { name: 'Contact', link: '#contact' },
 ]
 
+
+
 function CustomNavbar() {
   const [isOpen, setIsOpen] = useState(false)
 
@@ -40,7 +42,15 @@ function CustomNavbar() {
               key={idx}
               href={item.link}
               className="block px-4 py-2 text-neutral-600 dark:text-neutral-300 hover:bg-gray-100 dark:hover:bg-neutral-800 rounded"
-              onClick={() => setIsOpen(false)}
+              onClick={ e => {
+                e.preventDefault();
+                 setIsOpen(false);
+                
+                const targetElement = document.querySelector(item.link);
+                if(targetElement){
+                  targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+               }}
             >
               {item.name}
             </a>
